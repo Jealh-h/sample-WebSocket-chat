@@ -1,3 +1,4 @@
+// 渲染消息面板
 function render(content, data) {
     let item = document.createElement('li');
     item.innerHTML = `
@@ -7,6 +8,7 @@ function render(content, data) {
     content.appendChild(item);
 }
 
+// 渲染在线列表
 function renderOnlineList(arr, username) {
     let list = document.querySelector('.online-list');
     let online_count = document.querySelector('.online-count');
