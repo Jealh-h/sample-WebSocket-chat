@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket chat</title>
+    <style>
+      :root {
+        --login-margin-top: 5rem;
+      }
+      @keyframes dynamicBg {
+        0% {
+          background-position: 0% 50%;
+          transform: rotate(0deg);
+        }
+        50% {
+          background-position: 100% 50%;
+          transform: rotate(360deg);
+        }
+        100% {
+          background-position: 0% 50%;
+          transform: rotate(0deg);
+        }
+      }
+      .show-tip {
+        opacity: 1 !important;
+        transition: opacity 0.5s;
+      }
+      .login-modal {
+        width: 30rem;
+        height: 35rem;
+        border-radius: 50px;
+        margin: 100px auto;
+        position: relative;
+        overflow: hidden;
+        /* background: linear-gradient(45deg, #ff7a45, #fa8c16); */
+      }
+      .login-modal::after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background-size: 400%;
+        background-image: linear-gradient(
+          125deg,
+          #ffd666,
+          #ff4d4f,
+          #bae637,
+          #40a9ff
+        );
+        animation: dynamicBg 5s infinite;
+        /* filter: blur(10px); */
+      }
+      .login-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 2em;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 2;
+      }
+      form {
+        text-align: center;
+      }
+      form input {
+        display: block;
+        margin: 0 auto;
+      }
+      form .username-input {
+        width: 70%;
+        border: none;
+        height: 2rem;
+        padding: 0.5em;
+        outline: none;
+        float: left;
+        border-radius: 5px;
+        font-size: 1.2rem;
+      }
+      .username-wrapper {
+        width: 80%;
+        margin: 10em auto 0;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .text-limit-wrapper {
+        display: inline-block;
+        width: 20%;
+        height: 3em;
+        text-align: center;
+        line-height: 3em;
+      }
+      .login-btn {
+        margin-top: var(--login-margin-top);
+        cursor: pointer;
+        font-size: 1.5em;
+        height: 3rem;
+        width: 10rem;
+        border: none;
+        border-radius: 5px;
+      }
+      .alert-help {
+        height: 3em;
+        padding: 0.5em;
+        box-sizing: border-box;
+        color: #ff4d4f;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-modal">
+      <div class="login-content">
+        <form action="main.html" method="get" onsubmit="return checkForm()">
+          <div class="username-wrapper">
+            <input
+              class="username-input"
+              type="text"
+              name="username"
+              placeholder="请输入用户名"
+              maxlength="15"
+            />
+            <div class="text-limit-wrapper">
+              <span class="cur-length">0</span>/15
+            </div>
+          </div>
+          <div class="alert-help"></div>
+          <input
+            class="login-btn"
+            onclick="login()"
+            type="submit"
+            value="登录"
+          />
+        </form>
+      </div>
+    </div>
+    <script>
+      var userInput = document.querySelector(".username-input");
+      userInput.addEventListener("input", function () {
+        let length = userInput.value.length;
+        let cur_len = (document.querySelector(".cur-length").innerHTML =
+          length);
+      });
+      function checkForm() {
+        console.log("check");
+        if (userInput.value === "") {
+          let tip = document.querySelector(".alert-help");
+          tip.innerHTML = "请输入用户名";
+          tip.classList.toggle("show-tip");
+          return false;
+        }
+        return true;
+      }
+      function show(msg) {
+        let tip = document.querySelector(".alert-help");
+        tip.textContent = msg;
+        tip.classList.toggle("show-tip");
+      }
+    </script>
+  </body>
+</html>

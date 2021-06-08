@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>socket chat</title>
+    <style>
+      @keyframes fadeOut {
+        0% {
+          top: 150px;
+          opacity: 0.8;
+        }
+        50% {
+          top: 110px;
+          opacity: 0.5;
+        }
+        75% {
+          top: 80px;
+          opacity: 0.2;
+        }
+        100% {
+          top: 50px;
+          display: none;
+          opacity: 0;
+        }
+      }
+      body {
+        height: 100vh;
+        padding: 1px;
+        margin: 0;
+      }
+      .fadeOut {
+        animation: fadeOut 1.5s linear forwards;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border: 1px solid transparent;
+      }
+      .content li {
+        margin: 1rem 0.5rem;
+        padding: 0.5rem;
+        word-wrap: break-word;
+        border: 1px solid #ff9400;
+        border-radius: 10px;
+      }
+      .chat-area {
+        margin: 70px auto;
+        height: 600px;
+        width: 700px;
+        border-radius: 10px;
+        box-shadow: 0 0 40px 3px rgb(0 0 0 / 15%);
+        background-color: #f5f5f5;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .message-panel {
+        flex: 7;
+        box-sizing: border-box;
+        padding: 1rem;
+      }
+      .content {
+        width: 100%;
+        height: 340px;
+        overflow-y: auto;
+        /* background-color: #fff; */
+      }
+      .text-input-area {
+        flex: 3;
+        border-top: 1px dashed #000;
+        box-sizing: border-box;
+        padding: 1rem;
+      }
+      textarea {
+        resize: none;
+        font-size: 1.1rem;
+        padding: 0.5rem;
+        border: none;
+        background-color: #d9d9d9;
+      }
+      textarea:focus {
+        border: none;
+        outline: none;
+      }
+      .send-btn {
+        float: right;
+        width: 5rem;
+        height: 2.5rem;
+        outline: none;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        background-color: #0094ff;
+        margin: 1rem 2rem 0 0;
+        transition: all 0.5s;
+      }
+      .send-btn:hover {
+        cursor: pointer;
+        background-color: #00afff;
+      }
+      .greet {
+        position: fixed;
+        top: 150px;
+        right: 12%;
+        transform: translate(50%, -50%);
+        width: 250px;
+        height: 70px;
+        font-size: 1.5rem;
+        line-height: 70px;
+        text-align: center;
+        box-shadow: 0 0 10px 1px #bfbfbf;
+      }
+      .online-statistic {
+        width: 200px;
+        height: 320px;
+        padding: 0.5rem;
+        position: fixed;
+        top: 20vh;
+        background-color: #ff9400;
+        overflow-y: auto;
+      }
+      .online-statistic li {
+        padding: 0.5rem;
+        border-bottom: 1px solid #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="greet"></div>
+    <div class="online-statistic">
+      <h4>当前在线数：<span class="online-count"></span></h4>
+      <div>当前用户：<strong class="cur-user"></strong></div>
+      <h4>用户列表↓</h4>
+      <ul class="online-list"></ul>
+    </div>
+    <main class="chat-area">
+      <section class="message-panel">
+        <ul class="content"></ul>
+      </section>
+      <section class="text-input-area">
+        <textarea cols="70" rows="6" maxlength="150"></textarea>
+        <div><button class="send-btn">发送</button></div>
+      </section>
+    </main>
+    <script src="./main.js"></script>
+  </body>
+</html>

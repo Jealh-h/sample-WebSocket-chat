@@ -1,0 +1,36 @@
+Arguments: 
+  D:\nodejs\node.exe D:\nodejs\node_global\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  D:\Perl64\bin;C:\Users\胡恒东\AppData\Roaming\ActiveState\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NGX;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\jdks\jdk1.8\bin;D:\jdks\jdk1.8\jre\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Git\cmd;D:\nodejs\;D:\mingw64\bin;D:\program files\MongoDb\bin;C:\Users\胡恒东\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\胡恒东\AppData\Local\Programs\Python\Python38\;C:\Users\胡恒东\AppData\Local\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;D:\Program Files (x86)\IntelliJ IDEA Community Edition 2020.1.2\bin;;D:\anaconda3\Scripts;C:\Program Files\nodejs\node_global;D:\program files\IntelliJ IDEA 2021.1\bin;;C:\Users\胡恒东\AppData\Roaming\npm;D:\nodejs\node_global;D:\MySQL Server 8.0\bin;;D:\Program Files (x86)\CLion 2021.1.1\bin;
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (D:\nodejs\node_global\node_modules\yarn\lib\cli.js:136216:13)
+      at Interface.emit (events.js:315:20)
+      at Interface._ttyWrite (readline.js:875:16)
+      at ReadStream.onkeypress (readline.js:213:10)
+      at ReadStream.emit (events.js:315:20)
+      at emitKeys (internal/readline/utils.js:345:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1144:36)
+      at ReadStream.emit (events.js:315:20)
+      at addChunk (internal/streams/readable.js:309:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
