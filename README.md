@@ -4,11 +4,11 @@
 
 ### ## 运行
 
-可以下载直接用，server文件夹里面包含有node_modules.
+可以下载直接用，server 文件夹里面包含有 node_modules.
 
 后端：node server.js
 
-前端：浏览器打开index.html
+前端：浏览器打开 index.html
 
 ## 效果
 
@@ -26,5 +26,4 @@
 
 2.目前只支持文本输出。
 
-3.用户名存在局限，登录时使用的get提交表单，获取时会被url编码，具体编码由charset决定，不如‘空格’会编译成‘+‘。
-
+3.用户名存在局限，登录时使用的 get 提交表单，获取时会被 url 编码，具体编码由 charset 决定，比如 charset=utf-8,‘空格’会编译成‘+‘。
