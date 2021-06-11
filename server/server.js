@@ -1,6 +1,9 @@
 const WS = require('ws')
 
 const wss = new WS.Server({ port: 5055 });
+
+
+// 用于统计在线的用户
 var clients = [];
 
 function deleteUser(str, arr) {
@@ -11,18 +14,15 @@ function deleteUser(str, arr) {
 wss.on('connection', (ws, req) => {
     let c = {};
     let to_client = {};
-    ws.on('open', (login) => {
-        console.log(login);
-    })
     ws.on('message', (message) => {
         let clientMsg = JSON.parse(message);
         if (clientMsg.opr === 'login') {
             clients.push(clientMsg.username);
             to_client = {
-                opr: 'login',
-                msg: clientMsg.username + "上线了",
-                username: clientMsg.username,
-                users: JSON.stringify(clients)
+                opr: 'login', // 操作类型
+                msg: clientMsg.username + "上线了", // 消息
+                username: clientMsg.username, // 接收到来自谁的消息
+                users: JSON.stringify(clients) // 当前在线的用户 数组
             }
             ws.username = clientMsg.username;
             // 广播各个客户端

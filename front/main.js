@@ -1,5 +1,5 @@
 // 渲染消息面板
-function render(content, data) {
+function renderMessage(content, data) {
     let item = document.createElement('li');
     item.innerHTML = `
     <strong>${data.username}:</strong>
@@ -22,6 +22,7 @@ function renderOnlineList(arr, username) {
     list.innerHTML = users;
 }
 
+// 消息提示框
 function Myprompt(msg) {
     document.querySelector('.greet').textContent = msg;
     document.querySelector('.greet').classList.remove('fadeOut');
@@ -32,8 +33,7 @@ function Myprompt(msg) {
 
 window.onload = function () {
     var cs = {};
-    let clients = []
-    var username = decodeURI(location.search).split('?')[1].split('=')[1];
+    var username = unescape(location.search).split('?')[1].split('=')[1];
     let text_value = document.querySelector('textarea');
     let sendbtn = document.querySelector('.send-btn');
     let content = document.querySelector('.content');
@@ -43,16 +43,17 @@ window.onload = function () {
         msg: "",
         username: username
     };
+    // 建立连接时
     cs.onopen = function () {
         cs.send(JSON.stringify(loginMsg));
     };
+    // 接收消息
     cs.onmessage = (msg) => {
         let message = JSON.parse(msg.data);
         console.log(message);
         switch (message.opr) {
             case 'signOut':
                 // 更新在线列表
-                // console.log(message.users);
                 renderOnlineList(message.users, username);
                 Myprompt(message.msg);
                 break;
@@ -62,14 +63,14 @@ window.onload = function () {
                 Myprompt(message.msg);
                 break;
             case 'msg':
-                render(content, message)
+                renderMessage(content, message)
                 break;
             default:
                 break;
         }
     };
 
-    // 客户端发送自己的消息
+    // 客户端发送自己的消息--点击按钮事件
     sendbtn.addEventListener('click', () => {
         let item = document.createElement('li');
         let to_server = {};
@@ -78,9 +79,9 @@ window.onload = function () {
         ${text_value.value}
         `
         content.appendChild(item);
-        to_server.opr = 'msg';
-        to_server.msg = text_value.value;
-        to_server.username = username;
+        to_server.opr = 'msg'; // 操作类型
+        to_server.msg = text_value.value; // 消息
+        to_server.username = username; // 发送消息的用户名
         cs.send(JSON.stringify(to_server));
         text_value.value = '';
         content.scrollTo({ top: content.scrollHeight })
