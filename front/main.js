@@ -33,7 +33,7 @@ function Myprompt(msg) {
 
 window.onload = function () {
     var cs = {};
-    var username = unescape(location.search).split('?')[1].split('=')[1];
+    var username = decodeURIComponent(location.search).split('?')[1].split('=')[1];
     let text_value = document.querySelector('textarea');
     let sendbtn = document.querySelector('.send-btn');
     let content = document.querySelector('.content');
